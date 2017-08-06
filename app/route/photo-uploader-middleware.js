@@ -7,7 +7,7 @@ var s3 = new AWS.S3();
 
 const s3Storage = multerS3({
 	s3     : s3,
-   	bucket : 'entrenami-app-bucket',
+   	bucket : 'my-bucket',
    	acl    : 'public-read',
    	key    : function (req, file, callback) {
      	callback(null, file.originalname);

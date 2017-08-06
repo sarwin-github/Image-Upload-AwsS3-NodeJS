@@ -4,11 +4,11 @@ const mongoStore = require('connect-mongo')(session);
 
 //Local connection
 let mongoConnectionLocal = {	
-	'url': 'mongodb://sarwin:01610715@127.0.0.1:27017/aws-s3-image-upload'
+	'url': 'mongodb://username:password@127.0.0.1:27017/aws-s3-image-upload'
 };
 
 let mongoConnectionOnline = {
-	'url': 'mongodb://usernameValue:01610715@xxxxxxxx.mlab.com:39942/aws-s3-image-upload'
+	'url': 'mongodb://username:password@xxxxxxxx.mlab.com:xxxxx/aws-s3-image-upload'
 };
 
 
