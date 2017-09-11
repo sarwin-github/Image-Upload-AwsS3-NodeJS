@@ -8,6 +8,8 @@ const bodyParser    = require('body-parser');
 const cookieParser  = require('cookie-parser');
 const flash         = require('connect-flash');
 const morgan        = require('morgan');
+const helmet        = require('helmet');
+const dotEnv        = require('dotenv').config();
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //Set database connection
@@ -20,6 +22,13 @@ databaseConfig.pickEnv(env, app);
 //Set view engine and session
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 app.use(morgan('dev')); ///morgan is use for development to test what are the request and response that's being handle
+app.disable('x-powered-by');
+app.use(helmet());
+app.use(helmet.hidePoweredBy({ setTo: 'The Force' }));
+app.use(helmet.xssFilter());
+app.use(helmet.noCache());
+app.use(helmet.noSniff());
+app.use(helmet.frameguard());
 app.use(cookieParser());
 app.use(flash()); ///flash can be use to store messages or notification on session
 app.use(bodyParser.json());

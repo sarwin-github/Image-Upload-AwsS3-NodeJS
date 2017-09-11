@@ -4,7 +4,7 @@ const mongoStore = require('connect-mongo')(session);
 
 //Local connection
 let mongoConnectionLocal = {	
-	'url': 'mongodb://username:password@127.0.0.1:27017/aws-s3-image-upload'
+	'url': `mongodb://${process.env.mongoLocalUser}:${process.env.mongoLocalPass}@127.0.0.1:27017/aws-s3-image-upload`
 };
 
 let mongoConnectionOnline = {
@@ -29,7 +29,7 @@ module.exports.pickEnv = (env, app) => {
 	};
 
 	app.use(session({
-		secret : "xxxxxxxxxxxxxxxxxxxxx",    
+		secret : process.env.sessionKey,    
 		resave : true,
 	  	saveUninitialized: false, 
 		store  : new mongoStore({ mongooseConnection: mongoose.connection }),
